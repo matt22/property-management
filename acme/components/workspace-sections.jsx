@@ -51,7 +51,7 @@ export function WorkspaceSidebar({ firm }) {
               <p className="absolute left-0 top-6 z-20 w-56 rounded-xl bg-white p-3 text-xs leading-5 text-[#20342d] shadow-lg">Perfecto and Acme are separate workspaces with independent data. Choose a site to switch between them.</p>
             </details>
           </div>
-          <select id="site-picker" value={process.env.NEXT_PUBLIC_SITE} onChange={(event) => { window.location.href = `/${event.target.value}`; }} className="w-full rounded-xl border border-white/20 bg-[#30483e] px-3 py-2 text-sm text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+          <select id="site-picker" value={process.env.NEXT_PUBLIC_SITE} onChange={(event) => { window.location.assign(`/${event.target.value}`); }} className="w-full rounded-xl border border-white/20 bg-[#30483e] px-3 py-2 text-sm text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             <option value="perfecto">Perfecto</option>
             <option value="acme">Acme</option>
           </select>
