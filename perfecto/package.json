@@ -8,7 +8,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "test": "node --test"
+    "test": "node --test",
+    "data:reset": "node scripts/reset-data.js"
   },
   "dependencies": {
     "next": "16.4.6",
