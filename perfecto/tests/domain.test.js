@@ -61,6 +61,15 @@ test("assignments cannot cross firm boundaries", () => {
   );
 });
 
+test("rolling back one assignment preserves a concurrent change", () => {
+  const first = { firmId: "firm-northstar", portfolioId: "portfolio-urban-core", propertyId: "property-rainier-lofts", assigned: true };
+  const second = { firmId: "firm-northstar", portfolioId: "portfolio-resident-first", propertyId: "property-olive-and-8th", assigned: true };
+  const pending = setPortfolioAssignment(setPortfolioAssignment(seed, first), second);
+  const rolledBack = setPortfolioAssignment(pending, { ...first, assigned: false });
+  assert.equal(rolledBack.portfolioProperties.some((item) => item.portfolioId === first.portfolioId && item.propertyId === first.propertyId), false);
+  assert.equal(rolledBack.portfolioProperties.some((item) => item.portfolioId === second.portfolioId && item.propertyId === second.propertyId), true);
+});
+
 test("JSON store initializes from the seed and persists updates", async () => {
   const temporaryDirectory = await mkdtemp(path.join(tmpdir(), "perfecto-store-"));
   const dataFile = path.join(temporaryDirectory, "store.json");

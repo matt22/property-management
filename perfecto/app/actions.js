@@ -1,6 +1,5 @@
 "use server";
 
-import { revalidatePath } from "next/cache";
 import { setPortfolioAssignment } from "@/lib/domain";
 import { propertyStore } from "@/lib/property-store";
 
@@ -15,10 +14,7 @@ export async function updatePortfolioAssignment(input) {
     throw new Error("The assignment request is incomplete.");
   }
 
-  const updatedStore = await propertyStore.update((current) =>
+  await propertyStore.update((current) =>
     setPortfolioAssignment(current, input),
   );
-
-  revalidatePath("/");
-  return updatedStore;
 }

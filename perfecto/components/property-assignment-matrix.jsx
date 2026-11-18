@@ -23,9 +23,10 @@ export default function PropertyAssignmentMatrix({
   properties,
   portfolios,
   onToggle,
-  isSaving,
+  savingKeys,
   saveMessage,
 }) {
+  const isSaving = savingKeys.size > 0;
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
 
@@ -195,7 +196,7 @@ export default function PropertyAssignmentMatrix({
                               type="checkbox"
                               checked={checked}
                               onChange={(event) => onToggle(portfolio.id, property.id, event.target.checked)}
-                              disabled={isSaving}
+                              disabled={savingKeys.has(`${portfolio.id}:${property.id}`)}
                               aria-label={`${checked ? "Remove" : "Add"} ${property.name} ${checked ? "from" : "to"} ${portfolio.name}`}
                               className="size-[17px] cursor-pointer accent-[#426c5c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#426c5c]"
                             />
