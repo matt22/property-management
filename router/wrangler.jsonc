@@ -1,0 +1,7 @@
+{
+  "$schema": "../perfecto/node_modules/wrangler/config-schema.json",
+  "name": "property",
+  "main": "worker.js",
+  "compatibility_date": "2026-11-17",
+  "services": [{ "binding": "PERFECTO", "service": "property-perfecto" }]
+}
