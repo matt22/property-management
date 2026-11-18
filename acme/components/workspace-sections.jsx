@@ -52,7 +52,7 @@ export function WorkspaceSidebar({ firm }) {
             <Icon name="layers" size={21} />
           </span>
           <div>
-            <p className="text-[17px] font-semibold tracking-[-0.04em]">acme</p>
+            <p className="text-[17px] font-semibold tracking-[-0.04em]">acme <span className="ml-1 rounded-md bg-white/15 px-1.5 py-0.5 text-[9px] font-semibold uppercase tracking-wide text-white/80">buggy version</span></p>
             <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/55">
               property workspace
             </p>
@@ -66,7 +66,7 @@ export function WorkspaceSidebar({ firm }) {
               <summary aria-label="About site options" className="grid size-4 cursor-pointer list-none place-items-center rounded-full border border-white/50 text-[10px]">i</summary>
               <div className="absolute left-0 top-6 z-20 w-56 rounded-xl bg-white p-3 text-xs leading-5 text-[#20342d] shadow-lg">
                 <button type="button" aria-label="Close site information" onClick={() => { infoRef.current.open = false; infoRef.current.querySelector("summary")?.focus(); }} className="float-right -mt-1 ml-2 grid size-7 place-items-center rounded text-lg hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-[#426c5c]">×</button>
-                <p>Perfecto and Acme are separate workspaces with independent data. Choose a site to switch between them.</p>
+                <p>Perfecto and Acme are separate workspaces with independent data. Acme contains bugs. Choose a site to switch between them.</p>
               </div>
             </details>
           </div>
