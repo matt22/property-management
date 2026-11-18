@@ -8,7 +8,9 @@ Run Acme with `npm run dev` from `acme`, then open `/acme`. Assignment changes s
 
 **Change:** `components/workspace-sections.jsx` adds one to every portfolio's `propertyIds.length` when displaying its card. The underlying assignments do not gain a property.
 
-**Reproduce:** With the sample data, Urban core contains four properties but its card says five. In the image, Beacon Hill Flats was temporarily assigned to Urban core: its actual five assignments are shown as six. The other two cards each say three even though each has two assignments.
+**Reproduce:** Start with the sample data and assign Beacon Hill Flats to Urban core. The screenshot shows the resulting cards: Urban core says **6**, Resident first says **3**, and Signature collection says **3**. The actual assignment counts are **5**, **2**, and **2**, respectively. For Urban core, the five are Cedar House, Olive & 8th, Pike & Union, Westlake Residences, and the newly assigned Beacon Hill Flats. The screenshot shows the incorrect card values but does not show the individual assignments used to verify them.
+
+The **Assigned 7 / 12** summary counts distinct properties across all portfolios, not the sum of the card counts: Cedar House and Westlake Residences each belong to two portfolios. Before adding Beacon Hill Flats, the sample Urban core card says **5** for its four assignments.
 
 ![Changed card count code and Acme portfolio cards](cards-evidence.jpg)
 
@@ -17,6 +19,8 @@ Run Acme with `npm run dev` from `acme`, then open `/acme`. Assignment changes s
 **Change:** `lib/property-filters.js` changes the upper bound for the 90% band from `< 95` to `<= 95`. A property at exactly 95% now matches both this band and the separate 95% to under 97% band.
 
 **Reproduce:** Select **90% to under 95%**. Fremont Landing appears at 95%, despite the selected label excluding 95%.
+
+**UX suggestion:** Prefer explicit, non-overlapping ranges over labels such as “less than 95,” which require users to infer the lower bound. For whole-number occupancy values, labels such as **90%–94%** and **95%–96%** make both bounds clear; for example, use **4–6** and **7–9** for integer ranges in other dropdowns. If fractional occupancy is supported, retain precise inclusive/exclusive boundaries in the labels.
 
 ![Changed occupancy boundary and Acme filtered results](occupancy-evidence.jpg)
 
