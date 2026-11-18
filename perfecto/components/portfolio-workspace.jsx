@@ -3,7 +3,8 @@
 import { useMemo, useState } from "react";
 import Icon from "@/components/icon";
 import PropertyAssignmentMatrix from "@/components/property-assignment-matrix";
-import { getFirmOverview, setPortfolioAssignment } from "@/lib/domain";
+import { updatePortfolioAssignment } from "@/app/actions";
+import { getFirmOverview } from "@/lib/domain";
 
 const money = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -36,6 +37,8 @@ function MetricCard({ label, value, detail, icon, tone }) {
 export default function PortfolioWorkspace({ initialData }) {
   const [data, setData] = useState(initialData);
   const [selectedFirmId, setSelectedFirmId] = useState(initialData.firms[0]?.id ?? "");
+  const [isSaving, setIsSaving] = useState(false);
+  const [saveMessage, setSaveMessage] = useState("");
   const overview = useMemo(
     () => getFirmOverview(data, selectedFirmId),
     [data, selectedFirmId],
@@ -45,15 +48,24 @@ export default function PortfolioWorkspace({ initialData }) {
 
   const { firm, metrics, portfolios } = overview;
 
-  function handleToggle(portfolioId, propertyId, assigned) {
-    setData((current) =>
-      setPortfolioAssignment(current, {
+  async function handleToggle(portfolioId, propertyId, assigned) {
+    setIsSaving(true);
+    setSaveMessage("");
+
+    try {
+      const updatedData = await updatePortfolioAssignment({
         firmId: selectedFirmId,
         portfolioId,
         propertyId,
         assigned,
-      }),
-    );
+      });
+      setData(updatedData);
+      setSaveMessage("Assignment saved");
+    } catch {
+      setSaveMessage("We couldn’t save that assignment. Please try again.");
+    } finally {
+      setIsSaving(false);
+    }
   }
 
   return (
@@ -224,6 +236,8 @@ export default function PortfolioWorkspace({ initialData }) {
           properties={overview.properties}
           portfolios={portfolios}
           onToggle={handleToggle}
+          isSaving={isSaving}
+          saveMessage={saveMessage}
         />
       </main>
     </div>

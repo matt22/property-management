@@ -19,7 +19,13 @@ function PropertyMark({ name, index }) {
   );
 }
 
-export default function PropertyAssignmentMatrix({ properties, portfolios, onToggle }) {
+export default function PropertyAssignmentMatrix({
+  properties,
+  portfolios,
+  onToggle,
+  isSaving,
+  saveMessage,
+}) {
   const [query, setQuery] = useState("");
   const [filter, setFilter] = useState("all");
 
@@ -54,9 +60,19 @@ export default function PropertyAssignmentMatrix({ properties, portfolios, onTog
               Add a property to one or more portfolios with a checkbox.
             </p>
           </div>
-          <div className="flex items-center gap-2 rounded-full bg-[#e9f1eb] px-3 py-1.5 text-[11px] font-medium text-[#426c5c]">
-            <Icon name="check" size={14} />
-            Changes update instantly
+          <div
+            className={`flex items-center gap-2 rounded-full px-3 py-1.5 text-[11px] font-medium ${
+              isSaving
+                ? "bg-[#f5efe4] text-[#986c36]"
+                : saveMessage?.startsWith("We couldn’t")
+                  ? "bg-[#f7e9e6] text-[#a84938]"
+                  : "bg-[#e9f1eb] text-[#426c5c]"
+            }`}
+            role={saveMessage?.startsWith("We couldn’t") ? "alert" : "status"}
+            aria-live="polite"
+          >
+            <Icon name={isSaving ? "dots" : "check"} size={14} />
+            {isSaving ? "Saving assignment" : saveMessage || "Changes save automatically"}
           </div>
         </div>
 
@@ -178,6 +194,7 @@ export default function PropertyAssignmentMatrix({ properties, portfolios, onTog
                               type="checkbox"
                               checked={checked}
                               onChange={(event) => onToggle(portfolio.id, property.id, event.target.checked)}
+                              disabled={isSaving}
                               aria-label={`${checked ? "Remove" : "Add"} ${property.name} ${checked ? "from" : "to"} ${portfolio.name}`}
                               className="size-[17px] cursor-pointer accent-[#426c5c] focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[#426c5c]"
                             />
