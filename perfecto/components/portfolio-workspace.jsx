@@ -1,10 +1,10 @@
 "use client";
 
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 import Icon from "@/components/icon";
 import PropertyAssignmentMatrix from "@/components/property-assignment-matrix";
-import { updatePortfolioAssignment } from "@/app/actions";
-import { getFirmOverview, setPortfolioAssignment } from "@/lib/domain";
+import { getFirmOverview } from "@/lib/domain";
+import { usePortfolioAssignments } from "@/lib/use-portfolio-assignments";
 
 const money = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -35,11 +35,8 @@ function MetricCard({ label, value, detail, icon, tone }) {
 }
 
 export default function PortfolioWorkspace({ initialData }) {
-  const [data, setData] = useState(initialData);
   const [selectedFirmId, setSelectedFirmId] = useState(initialData.firms[0]?.id ?? "");
-  const [savingKeys, setSavingKeys] = useState(() => new Set());
-  const savingRef = useRef(new Set());
-  const [saveMessage, setSaveMessage] = useState("");
+  const { data, savingKeys, saveMessage, handleToggle } = usePortfolioAssignments(initialData, selectedFirmId);
   const overview = useMemo(
     () => getFirmOverview(data, selectedFirmId),
     [data, selectedFirmId],
@@ -48,27 +45,6 @@ export default function PortfolioWorkspace({ initialData }) {
   if (!overview) return null;
 
   const { firm, metrics, portfolios } = overview;
-
-  async function handleToggle(portfolioId, propertyId, assigned) {
-    const key = `${portfolioId}:${propertyId}`;
-    if (savingRef.current.has(key)) return;
-    savingRef.current.add(key);
-    setSavingKeys(new Set(savingRef.current));
-    setSaveMessage("");
-    const input = { firmId: selectedFirmId, portfolioId, propertyId, assigned };
-    setData((current) => setPortfolioAssignment(current, input));
-
-    try {
-      await updatePortfolioAssignment(input);
-      setSaveMessage((message) => message.startsWith("We couldn’t") ? message : "Assignment saved");
-    } catch {
-      setData((current) => setPortfolioAssignment(current, { ...input, assigned: !assigned }));
-      setSaveMessage("We couldn’t save that assignment. Please try again.");
-    } finally {
-      savingRef.current.delete(key);
-      setSavingKeys(new Set(savingRef.current));
-    }
-  }
 
   return (
     <div className="min-h-screen bg-[var(--canvas)] lg:flex">
