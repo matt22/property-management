@@ -17,6 +17,7 @@ export default function PortfolioWorkspace({ initialData }) {
   if (!overview) return null;
 
   const { firm, metrics, portfolios } = overview;
+  const initialMetrics = getFirmOverview(initialData, selectedFirmId).metrics;
 
   return (
     <div className="min-h-screen bg-[var(--canvas)] lg:flex">
@@ -25,7 +26,7 @@ export default function PortfolioWorkspace({ initialData }) {
       <main id="portfolio-overview" className="min-w-0 flex-1 px-5 pb-6 pt-5 sm:px-8 lg:px-10 lg:pt-6">
         <WorkspaceHeader firms={initialData.firms} selectedFirmId={selectedFirmId} onSelectFirm={setSelectedFirmId} />
 
-        <FirmMetrics metrics={metrics} />
+        <FirmMetrics metrics={{ ...metrics, assignedCount: initialMetrics.assignedCount }} />
 
         <FirmPortfolios firm={firm} portfolios={portfolios} />
 
