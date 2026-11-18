@@ -1,0 +1,275 @@
+{
+  "schemaVersion": 1,
+  "firms": [
+    {
+      "id": "firm-northstar",
+      "name": "Northstar Property Group",
+      "location": "Seattle, WA",
+      "initials": "NS",
+      "accent": "sage"
+    },
+    {
+      "id": "firm-meridian",
+      "name": "Meridian Residential",
+      "location": "Austin, TX",
+      "initials": "MR",
+      "accent": "lavender"
+    },
+    {
+      "id": "firm-harborstone",
+      "name": "Harborstone Commercial",
+      "location": "Portland, OR",
+      "initials": "HC",
+      "accent": "peach"
+    }
+  ],
+  "properties": [
+    {
+      "id": "property-cedar-house",
+      "firmId": "firm-northstar",
+      "name": "Cedar House",
+      "address": "408 Pine Street, Seattle, WA",
+      "type": "Multifamily",
+      "units": 84,
+      "occupancy": 97,
+      "value": 24800000
+    },
+    {
+      "id": "property-olive-and-8th",
+      "firmId": "firm-northstar",
+      "name": "Olive & 8th",
+      "address": "801 Olive Way, Seattle, WA",
+      "type": "Multifamily",
+      "units": 112,
+      "occupancy": 94,
+      "value": 36200000
+    },
+    {
+      "id": "property-rainier-lofts",
+      "firmId": "firm-northstar",
+      "name": "Rainier Lofts",
+      "address": "1920 Rainier Avenue S, Seattle, WA",
+      "type": "Multifamily",
+      "units": 63,
+      "occupancy": 91,
+      "value": 17800000
+    },
+    {
+      "id": "property-pike-and-union",
+      "firmId": "firm-northstar",
+      "name": "Pike & Union",
+      "address": "1401 2nd Avenue, Seattle, WA",
+      "type": "Mixed use",
+      "units": 48,
+      "occupancy": 96,
+      "value": 31900000
+    },
+    {
+      "id": "property-ballard-courtyard",
+      "firmId": "firm-northstar",
+      "name": "Ballard Courtyard",
+      "address": "5521 20th Avenue NW, Seattle, WA",
+      "type": "Multifamily",
+      "units": 76,
+      "occupancy": 98,
+      "value": 22400000
+    },
+    {
+      "id": "property-westlake-residences",
+      "firmId": "firm-northstar",
+      "name": "Westlake Residences",
+      "address": "2120 Westlake Avenue, Seattle, WA",
+      "type": "Multifamily",
+      "units": 130,
+      "occupancy": 89,
+      "value": 45700000
+    },
+    {
+      "id": "property-lady-bird",
+      "firmId": "firm-meridian",
+      "name": "Lady Bird Landing",
+      "address": "1800 South Lakeshore Boulevard, Austin, TX",
+      "type": "Multifamily",
+      "units": 96,
+      "occupancy": 96,
+      "value": 25600000
+    },
+    {
+      "id": "property-south-congress",
+      "firmId": "firm-meridian",
+      "name": "South Congress Commons",
+      "address": "1209 South Congress Avenue, Austin, TX",
+      "type": "Mixed use",
+      "units": 42,
+      "occupancy": 93,
+      "value": 19800000
+    },
+    {
+      "id": "property-pecan-square",
+      "firmId": "firm-meridian",
+      "name": "Pecan Square",
+      "address": "911 West 5th Street, Austin, TX",
+      "type": "Multifamily",
+      "units": 118,
+      "occupancy": 98,
+      "value": 33200000
+    },
+    {
+      "id": "property-willow-creek",
+      "firmId": "firm-meridian",
+      "name": "Willow Creek Flats",
+      "address": "3001 West Anderson Lane, Austin, TX",
+      "type": "Multifamily",
+      "units": 72,
+      "occupancy": 91,
+      "value": 16400000
+    },
+    {
+      "id": "property-sunset-market",
+      "firmId": "firm-meridian",
+      "name": "Sunset Market",
+      "address": "2201 East Cesar Chavez Street, Austin, TX",
+      "type": "Retail",
+      "units": 24,
+      "occupancy": 95,
+      "value": 12900000
+    },
+    {
+      "id": "property-the-elm",
+      "firmId": "firm-harborstone",
+      "name": "The Elm Building",
+      "address": "805 SW Broadway, Portland, OR",
+      "type": "Office",
+      "units": 18,
+      "occupancy": 88,
+      "value": 27100000
+    },
+    {
+      "id": "property-eastbank-works",
+      "firmId": "firm-harborstone",
+      "name": "Eastbank Works",
+      "address": "1120 SE Water Avenue, Portland, OR",
+      "type": "Office",
+      "units": 32,
+      "occupancy": 92,
+      "value": 24600000
+    },
+    {
+      "id": "property-rose-quarter",
+      "firmId": "firm-harborstone",
+      "name": "Rose Quarter Shops",
+      "address": "1 North Center Court Street, Portland, OR",
+      "type": "Retail",
+      "units": 27,
+      "occupancy": 97,
+      "value": 18500000
+    },
+    {
+      "id": "property-pioneer-place",
+      "firmId": "firm-harborstone",
+      "name": "Pioneer Place",
+      "address": "700 SW 5th Avenue, Portland, OR",
+      "type": "Retail",
+      "units": 35,
+      "occupancy": 99,
+      "value": 39200000
+    },
+    {
+      "id": "property-alberta-market",
+      "firmId": "firm-harborstone",
+      "name": "Alberta Market Hall",
+      "address": "1805 NE Alberta Street, Portland, OR",
+      "type": "Retail",
+      "units": 16,
+      "occupancy": 94,
+      "value": 11300000
+    }
+  ],
+  "portfolios": [
+    {
+      "id": "portfolio-urban-core",
+      "firmId": "firm-northstar",
+      "name": "Urban core",
+      "description": "High-performing homes in the city center",
+      "color": "#456d61"
+    },
+    {
+      "id": "portfolio-resident-first",
+      "firmId": "firm-northstar",
+      "name": "Resident first",
+      "description": "Places with a little room to grow",
+      "color": "#d28359"
+    },
+    {
+      "id": "portfolio-signature",
+      "firmId": "firm-northstar",
+      "name": "Signature collection",
+      "description": "The properties that define Northstar",
+      "color": "#8372a4"
+    },
+    {
+      "id": "portfolio-austin-living",
+      "firmId": "firm-meridian",
+      "name": "Austin living",
+      "description": "Our residential communities across Austin",
+      "color": "#456d61"
+    },
+    {
+      "id": "portfolio-value-creation",
+      "firmId": "firm-meridian",
+      "name": "Value creation",
+      "description": "Assets with room to unlock their potential",
+      "color": "#d28359"
+    },
+    {
+      "id": "portfolio-neighborhood-retail",
+      "firmId": "firm-meridian",
+      "name": "Neighborhood retail",
+      "description": "Daily destinations in growing neighborhoods",
+      "color": "#8372a4"
+    },
+    {
+      "id": "portfolio-pdx-office",
+      "firmId": "firm-harborstone",
+      "name": "Portland workplaces",
+      "description": "Flexible offices near the river and downtown",
+      "color": "#456d61"
+    },
+    {
+      "id": "portfolio-pdx-retail",
+      "firmId": "firm-harborstone",
+      "name": "Local retail",
+      "description": "The storefronts that make a neighborhood",
+      "color": "#d28359"
+    },
+    {
+      "id": "portfolio-long-term-hold",
+      "firmId": "firm-harborstone",
+      "name": "Long-term hold",
+      "description": "Durable assets built for the long view",
+      "color": "#8372a4"
+    }
+  ],
+  "portfolioProperties": [
+    { "portfolioId": "portfolio-urban-core", "propertyId": "property-cedar-house" },
+    { "portfolioId": "portfolio-urban-core", "propertyId": "property-olive-and-8th" },
+    { "portfolioId": "portfolio-urban-core", "propertyId": "property-pike-and-union" },
+    { "portfolioId": "portfolio-urban-core", "propertyId": "property-westlake-residences" },
+    { "portfolioId": "portfolio-resident-first", "propertyId": "property-rainier-lofts" },
+    { "portfolioId": "portfolio-resident-first", "propertyId": "property-westlake-residences" },
+    { "portfolioId": "portfolio-signature", "propertyId": "property-cedar-house" },
+    { "portfolioId": "portfolio-signature", "propertyId": "property-ballard-courtyard" },
+    { "portfolioId": "portfolio-austin-living", "propertyId": "property-lady-bird" },
+    { "portfolioId": "portfolio-austin-living", "propertyId": "property-pecan-square" },
+    { "portfolioId": "portfolio-austin-living", "propertyId": "property-willow-creek" },
+    { "portfolioId": "portfolio-value-creation", "propertyId": "property-south-congress" },
+    { "portfolioId": "portfolio-value-creation", "propertyId": "property-willow-creek" },
+    { "portfolioId": "portfolio-neighborhood-retail", "propertyId": "property-sunset-market" },
+    { "portfolioId": "portfolio-pdx-office", "propertyId": "property-the-elm" },
+    { "portfolioId": "portfolio-pdx-office", "propertyId": "property-eastbank-works" },
+    { "portfolioId": "portfolio-pdx-retail", "propertyId": "property-rose-quarter" },
+    { "portfolioId": "portfolio-pdx-retail", "propertyId": "property-alberta-market" },
+    { "portfolioId": "portfolio-long-term-hold", "propertyId": "property-pioneer-place" },
+    { "portfolioId": "portfolio-long-term-hold", "propertyId": "property-eastbank-works" }
+  ]
+}
