@@ -17,7 +17,10 @@ test("the sample file is a valid relational data set", () => {
 test("firm overview returns only its properties and portfolios", () => {
   const overview = getFirmOverview(seed, "firm-northstar");
 
-  assert.equal(overview.properties.length, 6);
+  assert.equal(overview.properties.length, 12);
+  for (const firm of seed.firms) {
+    assert.equal(getFirmOverview(seed, firm.id).properties.length, 12);
+  }
   assert.equal(overview.portfolios.length, 3);
   assert.equal(overview.portfolios[0].propertyIds.includes("property-cedar-house"), true);
   assert.equal(getFirmOverview(seed, "missing-firm"), null);
