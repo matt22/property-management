@@ -9,7 +9,7 @@ export function matchesOccupancy(property, range) {
     case "100": return occupancy === 100;
     case "97": return occupancy >= 97 && occupancy < 100;
     case "95": return occupancy >= 95 && occupancy < 97;
-    case "90": return occupancy >= 90 && occupancy < 95;
+    case "90": return occupancy >= 90 && occupancy <= 95;
     case "below90": return occupancy < 90;
     default: return true;
   }
