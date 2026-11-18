@@ -1,11 +1,10 @@
 import { randomUUID } from "node:crypto";
-import { COPYFILE_EXCL } from "node:fs";
+import { constants } from "node:fs";
 import { copyFile, mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
-import { fileURLToPath } from "node:url";
 import { validateStore } from "./domain.js";
 
-const DEFAULT_SEED_PATH = fileURLToPath(new URL("../data/seed.json", import.meta.url));
+const DEFAULT_SEED_PATH = path.resolve(process.cwd(), "data", "seed.json");
 
 export function createJsonStore({ dataFile, seedFile = DEFAULT_SEED_PATH } = {}) {
   const resolvedDataFile = path.resolve(
@@ -17,7 +16,7 @@ export function createJsonStore({ dataFile, seedFile = DEFAULT_SEED_PATH } = {})
     await mkdir(path.dirname(resolvedDataFile), { recursive: true });
 
     try {
-      await copyFile(seedFile, resolvedDataFile, COPYFILE_EXCL);
+      await copyFile(seedFile, resolvedDataFile, constants.COPYFILE_EXCL);
     } catch (error) {
       if (error.code !== "EEXIST") throw error;
     }
