@@ -4,7 +4,9 @@ export default {
     if (url.pathname === '/perfecto' || url.pathname.startsWith('/perfecto/')) {
       return env.PERFECTO.fetch(request);
     }
-    // The Acme service is configured after its independent deployment is ready.
+    if (url.pathname === '/acme' || url.pathname.startsWith('/acme/')) {
+      return env.ACME.fetch(request);
+    }
     url.pathname = '/perfecto';
     url.search = '';
     return Response.redirect(url.toString(), 302);

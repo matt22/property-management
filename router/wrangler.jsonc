@@ -3,5 +3,5 @@
   "name": "property",
   "main": "worker.js",
   "compatibility_date": "2026-11-17",
-  "services": [{ "binding": "PERFECTO", "service": "property-perfecto" }]
+  "services": [{ "binding": "PERFECTO", "service": "property-perfecto" }, { "binding": "ACME", "service": "property-acme" }]
 }
