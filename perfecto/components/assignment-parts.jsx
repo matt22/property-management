@@ -121,9 +121,9 @@ export function AssignmentControls({ isSaving, saveMessage, properties, unassign
             ))}
           </div>
           <div className="flex w-full flex-wrap gap-2 sm:w-auto sm:justify-end">
-          <label className="block w-full sm:w-auto">
+          <label className="relative block w-full sm:w-auto">
             <span className="sr-only">Filter by occupancy</span>
-            <select value={occupancy} onChange={(event) => setOccupancy(event.target.value)} className="h-10 w-full rounded-xl border border-[var(--line)] bg-white px-3 text-xs outline-none focus:border-[var(--sage-dark)] focus:ring-4 focus:ring-[#426c5c]/10">
+            <select value={occupancy} onChange={(event) => setOccupancy(event.target.value)} className="h-10 w-full appearance-none rounded-xl border border-[var(--line)] bg-white pl-3 pr-10 text-xs outline-none focus:border-[var(--sage-dark)] focus:ring-4 focus:ring-[#426c5c]/10">
               <option value="all">All occupancy levels</option>
               <option value="100">100% occupied</option>
               <option value="97">97% to under 100%</option>
@@ -131,6 +131,7 @@ export function AssignmentControls({ isSaving, saveMessage, properties, unassign
               <option value="90">90% to under 95%</option>
               <option value="below90">Below 90%</option>
             </select>
+            <Icon name="caret" size={16} className="pointer-events-none absolute right-3 top-1/2 -translate-y-1/2 text-[var(--ink-soft)]" />
           </label>
           <label className="relative block w-full sm:w-[220px]">
             <span className="sr-only">Search properties</span>
