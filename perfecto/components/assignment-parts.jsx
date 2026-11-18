@@ -72,7 +72,7 @@ function PropertyRow({ property, index, portfolios, onToggle, savingKeys }) {
                 );
 }
 
-export function AssignmentControls({ isSaving, saveMessage, properties, unassignedCount, filter, setFilter, query, setQuery }) {
+export function AssignmentControls({ isSaving, saveMessage, properties, unassignedCount, filter, setFilter, query, setQuery, occupancy, setOccupancy }) {
   return (
       <div className="flex flex-col gap-3 border-b border-[var(--line)] px-5 py-3 sm:px-7 sm:py-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
@@ -120,7 +120,19 @@ export function AssignmentControls({ isSaving, saveMessage, properties, unassign
               </button>
             ))}
           </div>
-          <label className="relative block w-full sm:max-w-[260px]">
+          <div className="flex w-full flex-wrap gap-2 sm:w-auto sm:justify-end">
+          <label className="block w-full sm:w-auto">
+            <span className="sr-only">Filter by occupancy</span>
+            <select value={occupancy} onChange={(event) => setOccupancy(event.target.value)} className="h-10 w-full rounded-xl border border-[var(--line)] bg-white px-3 text-xs outline-none focus:border-[var(--sage-dark)] focus:ring-4 focus:ring-[#426c5c]/10">
+              <option value="all">All occupancy levels</option>
+              <option value="100">100% occupied</option>
+              <option value="97">97% to under 100%</option>
+              <option value="95">95% to under 97%</option>
+              <option value="90">90% to under 95%</option>
+              <option value="below90">Below 90%</option>
+            </select>
+          </label>
+          <label className="relative block w-full sm:w-[220px]">
             <span className="sr-only">Search properties</span>
             <Icon
               name="search"
@@ -135,6 +147,7 @@ export function AssignmentControls({ isSaving, saveMessage, properties, unassign
               className="h-10 w-full rounded-xl border border-[var(--line)] bg-white pl-10 pr-3 text-xs outline-none transition placeholder:text-[#9aa39d] focus:border-[var(--sage-dark)] focus:ring-4 focus:ring-[#426c5c]/10"
             />
           </label>
+          </div>
         </div>
       </div>
   );
