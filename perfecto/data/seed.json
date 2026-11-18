@@ -31,7 +31,7 @@
       "address": "408 Pine Street, Seattle, WA",
       "type": "Multifamily",
       "units": 84,
-      "occupancy": 97,
+      "occupancy": 100,
       "value": 24800000
     },
     {
@@ -111,7 +111,7 @@
       "address": "911 West 5th Street, Austin, TX",
       "type": "Multifamily",
       "units": 118,
-      "occupancy": 98,
+      "occupancy": 100,
       "value": 33200000
     },
     {
@@ -171,7 +171,7 @@
       "address": "700 SW 5th Avenue, Portland, OR",
       "type": "Retail",
       "units": 35,
-      "occupancy": 99,
+      "occupancy": 100,
       "value": 39200000
     },
     {
@@ -311,7 +311,7 @@
       "address": "2400 E Riverside Drive, Austin, TX",
       "type": "Multifamily",
       "units": 104,
-      "occupancy": 90,
+      "occupancy": 89,
       "value": 26700000
     },
     {

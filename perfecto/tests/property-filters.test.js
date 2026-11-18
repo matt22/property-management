@@ -19,3 +19,14 @@ test("search, occupancy and assignment filters must all match", () => {
   assert.deepEqual(filterProperties(properties, { query: " CEDAR ", occupancy: "95", assignment: "assigned", portfolios }).map((p) => p.id), ["a"]);
   assert.deepEqual(filterProperties(properties, { query: "pine", occupancy: "95", assignment: "unassigned", portfolios }), []);
 });
+
+test("each firm's sample properties cover all occupancy bands", async () => {
+  const { readFile } = await import("node:fs/promises");
+  const seed = JSON.parse(await readFile(new URL("../data/seed.json", import.meta.url), "utf8"));
+  for (const firm of seed.firms) {
+    const properties = seed.properties.filter((property) => property.firmId === firm.id);
+    for (const band of ["100", "97", "95", "90", "below90"]) {
+      assert.ok(properties.some((property) => matchesOccupancy(property, band)), `${firm.name} has no properties in ${band}`);
+    }
+  }
+});
