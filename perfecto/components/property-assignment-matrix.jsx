@@ -36,12 +36,12 @@ export default function PropertyAssignmentMatrix({
   ).length;
 
   return (
-    <section id="property-directory" className="mt-6 overflow-hidden rounded-[22px] border border-[var(--line)] bg-[var(--paper)] shadow-[0_4px_16px_rgba(32,52,45,0.025)]">
+    <section id="property-directory" className="mt-4 overflow-hidden rounded-[22px] border border-[var(--line)] bg-[var(--paper)] shadow-[0_4px_16px_rgba(32,52,45,0.025)]">
       <AssignmentControls isSaving={isSaving} saveMessage={saveMessage} properties={properties} unassignedCount={unassignedCount} filter={filter} setFilter={setFilter} query={query} setQuery={setQuery} />
 
       <AssignmentTable properties={properties} matchingProperties={matchingProperties} portfolios={portfolios} onToggle={onToggle} savingKeys={savingKeys} />
 
-      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[var(--line)] bg-[#fafaf6] px-6 py-3.5 text-[11px] text-[var(--ink-soft)]">
+      <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[var(--line)] bg-[#fafaf6] px-6 py-2 text-[11px] text-[var(--ink-soft)]">
         <span>Showing {matchingProperties.length} of {properties.length} properties</span>
         <span>Properties can belong to multiple portfolios</span>
       </div>

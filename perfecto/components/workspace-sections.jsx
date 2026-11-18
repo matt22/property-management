@@ -9,13 +9,13 @@ const money = new Intl.NumberFormat("en-US", {
 
 function MetricCard({ label, value, detail, icon, tone }) {
   return (
-    <article className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5 shadow-[0_2px_8px_rgba(32,52,45,0.025)]">
+    <article className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] px-5 py-3 shadow-[0_2px_8px_rgba(32,52,45,0.025)]">
       <div className="flex items-start justify-between gap-4">
         <div>
           <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-[var(--ink-soft)]">
             {label}
           </p>
-          <p className="mt-3 text-[28px] font-semibold tracking-[-0.045em] text-[var(--ink)]">
+          <p className="mt-1 text-[28px] font-semibold tracking-[-0.045em] text-[var(--ink)]">
             {value}
           </p>
           <p className="mt-1 text-xs text-[var(--ink-soft)]">{detail}</p>
@@ -30,7 +30,7 @@ function MetricCard({ label, value, detail, icon, tone }) {
 
 export function WorkspaceSidebar({ firm }) {
   return (
-      <aside className="flex w-full shrink-0 flex-col bg-[#1f342d] px-5 py-5 text-white lg:min-h-screen lg:w-[252px] lg:px-6 lg:py-7">
+      <aside className="flex w-full shrink-0 flex-col bg-[#1f342d] px-5 py-5 text-white lg:min-h-screen lg:w-[252px] lg:px-6 lg:py-5">
         <div className="flex items-center gap-3">
           <span className="grid size-10 place-items-center rounded-[14px] bg-[#dbe7dd] text-[#244237]">
             <Icon name="layers" size={21} />
@@ -43,15 +43,15 @@ export function WorkspaceSidebar({ firm }) {
           </div>
         </div>
 
-        <div className="mt-10 hidden lg:block">
+        <div className="mt-7 hidden lg:block">
           <p className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
             Workspace
           </p>
-          <a href="#portfolio-overview" className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+          <a href="#portfolio-overview" className="flex items-center gap-3 rounded-xl px-3 py-2 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             <Icon name="grid" size={17} />
             Portfolio overview
           </a>
-          <a href="#property-directory" className="mt-1 flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-white/80 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+          <a href="#property-directory" className="mt-1 flex items-center gap-3 rounded-xl px-3 py-2 text-sm text-white/80 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             <Icon name="building" size={17} />
             Property directory
           </a>
@@ -81,15 +81,15 @@ export function WorkspaceSidebar({ firm }) {
 
 export function WorkspaceHeader({ firms, selectedFirmId, onSelectFirm }) {
   return (
-        <header className="flex flex-col justify-between gap-6 border-b border-[var(--line)] pb-7 sm:flex-row sm:items-end">
+        <header className="flex flex-col justify-between gap-4 border-b border-[var(--line)] pb-4 sm:flex-row sm:items-end">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.19em] text-[var(--sage-dark)]">
               Portfolio management
             </p>
-            <h1 className="mt-2 text-[30px] font-semibold tracking-[-0.05em] text-[var(--ink)] sm:text-[34px]">
+            <h1 className="mt-1 text-[30px] font-semibold tracking-[-0.05em] text-[var(--ink)] sm:text-[34px]">
               Portfolio overview
             </h1>
-            <p className="mt-2 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">
+            <p className="mt-1 max-w-xl text-sm leading-5 text-[var(--ink-soft)]">
               A clear view of the properties and portfolios your team is shaping.
             </p>
           </div>
@@ -100,7 +100,7 @@ export function WorkspaceHeader({ firms, selectedFirmId, onSelectFirm }) {
             </span>
             <span className="relative block">
               <select
-                className="h-12 w-full appearance-none rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-4 pr-11 text-sm font-medium outline-none transition focus:border-[var(--sage-dark)] focus:ring-4 focus:ring-[#426c5c]/10"
+                className="h-10 w-full appearance-none rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-4 pr-11 text-sm font-medium outline-none transition focus:border-[var(--sage-dark)] focus:ring-4 focus:ring-[#426c5c]/10"
                 value={selectedFirmId}
                 onChange={(event) => onSelectFirm(event.target.value)}
               >
@@ -123,7 +123,7 @@ export function WorkspaceHeader({ firms, selectedFirmId, onSelectFirm }) {
 
 export function FirmMetrics({ metrics }) {
   return (
-        <section className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Firm summary">
+        <section className="mt-4 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Firm summary">
           <MetricCard
             label="Properties"
             value={metrics.propertyCount}
@@ -158,7 +158,7 @@ export function FirmMetrics({ metrics }) {
 
 export function FirmPortfolios({ firm, portfolios }) {
   return (
-        <section className="mt-8 rounded-[22px] border border-[var(--line)] bg-[var(--paper)] p-6 shadow-[0_4px_16px_rgba(32,52,45,0.025)] sm:p-8">
+        <section className="mt-4 rounded-[22px] border border-[var(--line)] bg-[var(--paper)] px-6 py-4 shadow-[0_4px_16px_rgba(32,52,45,0.025)] sm:px-8 sm:py-5">
           <div className="flex flex-wrap items-start justify-between gap-5">
             <div>
               <div className="flex items-center gap-2">
@@ -167,12 +167,12 @@ export function FirmPortfolios({ firm, portfolios }) {
                   Firm workspace
                 </p>
               </div>
-              <h2 className="mt-3 text-[23px] font-semibold tracking-[-0.04em]">
+              <h2 className="mt-1 text-[23px] font-semibold tracking-[-0.04em]">
                 {firm.name}
               </h2>
               <p className="mt-1 text-sm text-[var(--ink-soft)]">{firm.location}</p>
             </div>
-            <div className="rounded-xl bg-[#f4f4ee] px-4 py-3 text-right">
+            <div className="rounded-xl bg-[#f4f4ee] px-4 py-2 text-right">
               <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-soft)]">
                 Current view
               </p>
@@ -180,9 +180,9 @@ export function FirmPortfolios({ firm, portfolios }) {
             </div>
           </div>
 
-          <div className="mt-7 grid gap-3 md:grid-cols-3">
+          <div className="mt-4 grid gap-3 md:grid-cols-3">
             {portfolios.map((portfolio, index) => (
-              <article key={portfolio.id} className="rounded-2xl border border-[var(--line)] p-4">
+              <article key={portfolio.id} className="rounded-2xl border border-[var(--line)] px-4 py-3">
                 <div className="flex items-start justify-between gap-3">
                   <span className="grid size-9 place-items-center rounded-xl bg-[#f2f4ee] text-[var(--sage-dark)]">
                     <Icon name="layers" size={17} />
@@ -191,11 +191,11 @@ export function FirmPortfolios({ firm, portfolios }) {
                     {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
-                <h3 className="mt-4 font-semibold tracking-[-0.02em]">{portfolio.name}</h3>
+                <h3 className="mt-2 font-semibold tracking-[-0.02em]">{portfolio.name}</h3>
                 <p className="mt-1 min-h-10 text-xs leading-5 text-[var(--ink-soft)]">
                   {portfolio.description}
                 </p>
-                <p className="mt-4 border-t border-[var(--line)] pt-3 text-xs font-medium">
+                <p className="mt-2 border-t border-[var(--line)] pt-2 text-xs font-medium">
                   {portfolio.propertyIds.length} properties
                 </p>
               </article>

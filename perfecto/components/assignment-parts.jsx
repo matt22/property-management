@@ -23,7 +23,7 @@ function PropertyRow({ property, index, portfolios, onToggle, savingKeys }) {
 
                 return (
                   <tr className="group transition hover:bg-[#fbfbf8]">
-                    <th scope="row" className="sticky left-0 z-[1] border-b border-[var(--line)] bg-[var(--paper)] px-6 py-4 text-left group-hover:bg-[#fbfbf8]">
+                    <th scope="row" className="sticky left-0 z-[1] border-b border-[var(--line)] bg-[var(--paper)] px-6 py-2 text-left group-hover:bg-[#fbfbf8]">
                       <div className="flex items-center gap-3">
                         <PropertyMark name={property.name} index={index} />
                         <div className="min-w-0">
@@ -36,7 +36,7 @@ function PropertyRow({ property, index, portfolios, onToggle, savingKeys }) {
                         </div>
                       </div>
                     </th>
-                    <td className="border-b border-[var(--line)] px-4 py-4">
+                    <td className="border-b border-[var(--line)] px-4 py-2">
                       <div className="flex items-center gap-2">
                         <span className="relative h-1.5 w-12 overflow-hidden rounded-full bg-[#e9ece6]">
                           <span
@@ -54,7 +54,7 @@ function PropertyRow({ property, index, portfolios, onToggle, savingKeys }) {
                       const checked = portfolio.propertyIds.includes(property.id);
 
                       return (
-                        <td key={portfolio.id} className="border-b border-[var(--line)] px-3 py-4 text-center">
+                        <td key={portfolio.id} className="border-b border-[var(--line)] px-3 py-2 text-center">
                           <label className="inline-grid min-h-10 min-w-10 cursor-pointer place-items-center rounded-xl transition hover:bg-[#f1f4ef]">
                             <input
                               type="checkbox"
@@ -74,7 +74,7 @@ function PropertyRow({ property, index, portfolios, onToggle, savingKeys }) {
 
 export function AssignmentControls({ isSaving, saveMessage, properties, unassignedCount, filter, setFilter, query, setQuery }) {
   return (
-      <div className="flex flex-col gap-5 border-b border-[var(--line)] px-5 py-5 sm:px-7 sm:py-6">
+      <div className="flex flex-col gap-3 border-b border-[var(--line)] px-5 py-3 sm:px-7 sm:py-4">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>
             <h2 className="text-lg font-semibold tracking-[-0.035em]">Property assignments</h2>
@@ -110,7 +110,7 @@ export function AssignmentControls({ isSaving, saveMessage, properties, unassign
                 type="button"
                 aria-pressed={filter === value}
                 onClick={() => setFilter(value)}
-                className={`rounded-full px-3 py-2 text-[11px] font-medium transition ${
+                className={`rounded-full px-3 py-1.5 text-[11px] font-medium transition ${
                   filter === value
                     ? "bg-[#203a30] text-white"
                     : "bg-[#f3f3ed] text-[var(--ink-soft)] hover:bg-[#ebede5]"
@@ -142,7 +142,7 @@ export function AssignmentControls({ isSaving, saveMessage, properties, unassign
 
 export function AssignmentTable({ properties, matchingProperties, portfolios, onToggle, savingKeys }) {
   return (
-      <div style={{ minHeight: `${4.5 * (properties.length + 1)}rem` }} className="flex flex-col">
+      <div style={{ minHeight: `${3.5 * (properties.length + 1)}rem` }} className="flex flex-col">
       {matchingProperties.length === 0 ? (
         <div className="grid min-h-48 flex-1 place-items-center px-6 py-12 text-center">
           <div>
@@ -158,14 +158,14 @@ export function AssignmentTable({ properties, matchingProperties, portfolios, on
           <table className="w-full min-w-[860px] border-separate border-spacing-0 text-left">
             <thead>
               <tr className="bg-[#fafaf6] text-[10px] font-semibold uppercase tracking-[0.11em] text-[var(--ink-soft)]">
-                <th scope="col" className="sticky left-0 z-10 min-w-[320px] border-b border-[var(--line)] bg-[#fafaf6] px-6 py-4">
+                <th scope="col" className="sticky left-0 z-10 min-w-[320px] border-b border-[var(--line)] bg-[#fafaf6] px-6 py-2">
                   Property
                 </th>
-                <th scope="col" className="min-w-[145px] border-b border-[var(--line)] px-4 py-4">
+                <th scope="col" className="min-w-[145px] border-b border-[var(--line)] px-4 py-2">
                   Occupancy
                 </th>
                 {portfolios.map((portfolio) => (
-                  <th key={portfolio.id} scope="col" className="min-w-[135px] border-b border-[var(--line)] px-3 py-4 text-center normal-case tracking-normal">
+                  <th key={portfolio.id} scope="col" className="min-w-[135px] border-b border-[var(--line)] px-3 py-2 text-center normal-case tracking-normal">
                     <span className="mx-auto block max-w-[120px] truncate text-[11px] font-semibold text-[var(--ink)]">
                       {portfolio.name}
                     </span>

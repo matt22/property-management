@@ -22,7 +22,7 @@ export default function PortfolioWorkspace({ initialData }) {
     <div className="min-h-screen bg-[var(--canvas)] lg:flex">
       <WorkspaceSidebar firm={firm} />
 
-      <main id="portfolio-overview" className="min-w-0 flex-1 px-5 pb-10 pt-7 sm:px-8 lg:px-10 lg:pt-9">
+      <main id="portfolio-overview" className="min-w-0 flex-1 px-5 pb-6 pt-5 sm:px-8 lg:px-10 lg:pt-6">
         <WorkspaceHeader firms={initialData.firms} selectedFirmId={selectedFirmId} onSelectFirm={setSelectedFirmId} />
 
         <FirmMetrics metrics={metrics} />
