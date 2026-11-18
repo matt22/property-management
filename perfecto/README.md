@@ -4,7 +4,7 @@ A Next.js workspace for reviewing a firm's properties and assigning each propert
 
 ## Run locally
 
-Use Node.js 20.9 or newer.
+Use Node.js 22.12 or newer and npm. Run these commands from this application’s directory. Wrangler, included with the development dependencies, requires Node.js 22.12 or newer.
 
 ```bash
 npm install
@@ -21,7 +21,7 @@ Restore the sample data with:
 npm run data:reset
 ```
 
-The reset command removes the runtime file. The next app request creates a fresh copy from the sample data.
+The reset command deletes the runtime file and any local assignment changes in it. The next app request creates a fresh copy from the sample data.
 
 ## Data model
 
@@ -52,6 +52,8 @@ npm test
 npm run build
 npm run start
 ```
+
+Both applications use port 3000 by default. To run them at the same time, start the second with `npm run dev -- --port 3001` and use that port in its URL. Run `npm run build` before `npm run start`; the production server also defaults to port 3000.
 
 ## Cloudflare deployment
 
