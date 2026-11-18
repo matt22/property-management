@@ -11,7 +11,7 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000).
+Open [http://localhost:3000/perfecto](http://localhost:3000/perfecto).
 
 The first request creates `data/property-portfolio.json` from `data/seed.json`. Assignment changes are written to that local JSON file. The runtime file is ignored by Git, so the checked-in sample remains unchanged.
 
