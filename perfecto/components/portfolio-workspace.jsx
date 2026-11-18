@@ -107,12 +107,12 @@ export default function PortfolioWorkspace({ initialData }) {
             </span>
             <div className="min-w-0 flex-1">
               <p className="truncate text-xs font-medium">{firm.name}</p>
-              <p className="mt-1 text-[11px] text-white/50">Local JSON data</p>
+              <p className="mt-1 text-[11px] text-white/50">Portfolio data</p>
             </div>
             <Icon name="dots" size={16} className="text-white/50" />
           </div>
           <p className="mt-4 hidden px-1 text-[11px] leading-5 text-white/40 lg:block">
-            Your portfolio data stays in this workspace.
+            Assignment changes save automatically.
           </p>
         </div>
       </aside>

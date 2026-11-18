@@ -9,7 +9,9 @@
     "start": "next start",
     "lint": "eslint",
     "test": "node --test",
-    "data:reset": "node scripts/reset-data.js"
+    "data:reset": "node scripts/reset-data.js",
+    "build:cloudflare": "opennextjs-cloudflare build",
+    "deploy:cloudflare": "opennextjs-cloudflare deploy"
   },
   "dependencies": {
     "next": "16.4.6",
@@ -17,9 +19,11 @@
     "react-dom": "19.3.0"
   },
   "devDependencies": {
+    "@opennextjs/cloudflare": "^1.20.17",
     "@tailwindcss/postcss": "4.3.3",
     "eslint": "^9",
     "eslint-config-next": "16.4.6",
-    "tailwindcss": "4.3.3"
+    "tailwindcss": "4.3.3",
+    "wrangler": "^4.164.0"
   }
 }

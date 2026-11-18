@@ -53,4 +53,8 @@ npm run build
 npm run start
 ```
 
-The JSON file is intended for local Node.js use. It is not durable storage for a serverless runtime; choose a persistent data service before deploying that way.
+## Cloudflare deployment
+
+Cloudflare Workers builds use OpenNext and store assignments in the bound D1 database. The database initializes from the sample data on its first request; subsequent deployments preserve its contents. Locally, the app continues to use the JSON file described above. Build the Worker with `npm run build:cloudflare`.
+
+The app has no authentication or user isolation. Anyone who can reach the deployment can view and change its shared data, so use only sample data until access controls are added.

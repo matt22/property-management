@@ -1,0 +1,10 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "property-management",
+  "main": ".open-next/worker.js",
+  "compatibility_date": "2026-11-17",
+  "compatibility_flags": ["nodejs_compat", "global_fetch_strictly_public"],
+  "assets": { "directory": ".open-next/assets", "binding": "ASSETS" },
+  "vars": { "CLOUDFLARE_DEPLOYMENT": "true" },
+  "d1_databases": [{ "binding": "PROPERTY_DB", "database_name": "property-management", "database_id": "cff448d4-a857-4327-b7a0-864f301dee76" }]
+}

@@ -2,7 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import { setPortfolioAssignment } from "@/lib/domain";
-import { propertyStore } from "@/lib/json-store";
+import { propertyStore } from "@/lib/property-store";
 
 export async function updatePortfolioAssignment(input) {
   if (
