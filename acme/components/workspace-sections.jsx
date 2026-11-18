@@ -1,3 +1,4 @@
+import { useEffect, useRef } from "react";
 import Icon from "@/components/icon";
 
 const money = new Intl.NumberFormat("en-US", {
@@ -29,6 +30,21 @@ function MetricCard({ label, value, detail, icon, tone }) {
 }
 
 export function WorkspaceSidebar({ firm }) {
+  const infoRef = useRef(null);
+  useEffect(() => {
+    function outside(event) {
+      if (infoRef.current && !infoRef.current.contains(event.target)) infoRef.current.open = false;
+    }
+    function escape(event) {
+      if (event.key === "Escape" && infoRef.current?.open) {
+        infoRef.current.open = false;
+        infoRef.current.querySelector("summary")?.focus();
+      }
+    }
+    document.addEventListener("pointerdown", outside);
+    document.addEventListener("keydown", escape);
+    return () => { document.removeEventListener("pointerdown", outside); document.removeEventListener("keydown", escape); };
+  }, []);
   return (
       <aside className="flex w-full shrink-0 flex-col bg-[#293455] px-5 py-5 text-white lg:min-h-screen lg:w-[252px] lg:px-6 lg:py-5">
         <div className="flex items-center gap-3">
@@ -46,15 +62,21 @@ export function WorkspaceSidebar({ firm }) {
         <div className="mt-6">
           <div className="mb-2 flex items-center gap-2">
             <label htmlFor="site-picker" className="text-[10px] font-semibold uppercase tracking-[0.16em] text-white/55">Site</label>
-            <details className="relative text-white/70">
+            <details ref={infoRef} className="relative text-white/70">
               <summary aria-label="About site options" className="grid size-4 cursor-pointer list-none place-items-center rounded-full border border-white/50 text-[10px]">i</summary>
-              <p className="absolute left-0 top-6 z-20 w-56 rounded-xl bg-white p-3 text-xs leading-5 text-[#20342d] shadow-lg">Perfecto and Acme are separate workspaces with independent data. Choose a site to switch between them.</p>
+              <div className="absolute left-0 top-6 z-20 w-56 rounded-xl bg-white p-3 text-xs leading-5 text-[#20342d] shadow-lg">
+                <button type="button" aria-label="Close site information" onClick={() => { infoRef.current.open = false; infoRef.current.querySelector("summary")?.focus(); }} className="float-right -mt-1 ml-2 grid size-7 place-items-center rounded text-lg hover:bg-black/5 focus-visible:outline-2 focus-visible:outline-[#426c5c]">×</button>
+                <p>Perfecto and Acme are separate workspaces with independent data. Choose a site to switch between them.</p>
+              </div>
             </details>
           </div>
-          <select id="site-picker" value={process.env.NEXT_PUBLIC_SITE} onChange={(event) => { window.location.assign(`/${event.target.value}`); }} className="w-full rounded-xl border border-white/20 bg-[#30483e] px-3 py-2 text-sm text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+          <span className="relative block">
+          <select id="site-picker" value={process.env.NEXT_PUBLIC_SITE} onChange={(event) => { window.location.assign(`/${event.target.value}`); }} className="w-full appearance-none rounded-xl border border-white/20 bg-[#30483e] py-2 pl-3 pr-10 text-sm text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             <option value="perfecto">Perfecto</option>
             <option value="acme">Acme</option>
           </select>
+          <Icon name="caret" size={17} className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-white/70" />
+          </span>
         </div>
 
         <div className="mt-7 hidden lg:block">
