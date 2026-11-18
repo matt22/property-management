@@ -51,7 +51,7 @@ export default function PropertyAssignmentMatrix({
   ).length;
 
   return (
-    <section className="mt-6 overflow-hidden rounded-[22px] border border-[var(--line)] bg-[var(--paper)] shadow-[0_4px_16px_rgba(32,52,45,0.025)]">
+    <section id="property-directory" className="mt-6 overflow-hidden rounded-[22px] border border-[var(--line)] bg-[var(--paper)] shadow-[0_4px_16px_rgba(32,52,45,0.025)]">
       <div className="flex flex-col gap-5 border-b border-[var(--line)] px-5 py-5 sm:px-7 sm:py-6">
         <div className="flex flex-wrap items-start justify-between gap-4">
           <div>

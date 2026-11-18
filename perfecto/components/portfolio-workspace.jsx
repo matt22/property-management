@@ -87,14 +87,14 @@ export default function PortfolioWorkspace({ initialData }) {
           <p className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
             Workspace
           </p>
-          <div className="flex items-center gap-3 rounded-xl bg-white/10 px-3 py-3 text-sm font-medium text-white">
+          <a href="#portfolio-overview" className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             <Icon name="grid" size={17} />
             Portfolio overview
-          </div>
-          <div className="mt-1 flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-white/65">
+          </a>
+          <a href="#property-directory" className="mt-1 flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-white/80 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
             <Icon name="building" size={17} />
             Property directory
-          </div>
+          </a>
         </div>
 
         <div className="mt-6 border-t border-white/10 pt-5 lg:mt-auto lg:border-0 lg:pt-0">
@@ -117,7 +117,7 @@ export default function PortfolioWorkspace({ initialData }) {
         </div>
       </aside>
 
-      <main className="min-w-0 flex-1 px-5 pb-10 pt-7 sm:px-8 lg:px-10 lg:pt-9">
+      <main id="portfolio-overview" className="min-w-0 flex-1 px-5 pb-10 pt-7 sm:px-8 lg:px-10 lg:pt-9">
         <header className="flex flex-col justify-between gap-6 border-b border-[var(--line)] pb-7 sm:flex-row sm:items-end">
           <div>
             <p className="text-[10px] font-semibold uppercase tracking-[0.19em] text-[var(--sage-dark)]">
