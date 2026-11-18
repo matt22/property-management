@@ -1,0 +1,207 @@
+import Icon from "@/components/icon";
+
+const money = new Intl.NumberFormat("en-US", {
+  style: "currency",
+  currency: "USD",
+  notation: "compact",
+  maximumFractionDigits: 1,
+});
+
+function MetricCard({ label, value, detail, icon, tone }) {
+  return (
+    <article className="rounded-2xl border border-[var(--line)] bg-[var(--paper)] p-5 shadow-[0_2px_8px_rgba(32,52,45,0.025)]">
+      <div className="flex items-start justify-between gap-4">
+        <div>
+          <p className="text-[11px] font-semibold uppercase tracking-[0.13em] text-[var(--ink-soft)]">
+            {label}
+          </p>
+          <p className="mt-3 text-[28px] font-semibold tracking-[-0.045em] text-[var(--ink)]">
+            {value}
+          </p>
+          <p className="mt-1 text-xs text-[var(--ink-soft)]">{detail}</p>
+        </div>
+        <span className={`grid size-10 place-items-center rounded-xl ${tone}`}>
+          <Icon name={icon} size={18} />
+        </span>
+      </div>
+    </article>
+  );
+}
+
+export function WorkspaceSidebar({ firm }) {
+  return (
+      <aside className="flex w-full shrink-0 flex-col bg-[#1f342d] px-5 py-5 text-white lg:min-h-screen lg:w-[252px] lg:px-6 lg:py-7">
+        <div className="flex items-center gap-3">
+          <span className="grid size-10 place-items-center rounded-[14px] bg-[#dbe7dd] text-[#244237]">
+            <Icon name="layers" size={21} />
+          </span>
+          <div>
+            <p className="text-[17px] font-semibold tracking-[-0.04em]">folio</p>
+            <p className="text-[10px] font-medium uppercase tracking-[0.18em] text-white/55">
+              property workspace
+            </p>
+          </div>
+        </div>
+
+        <div className="mt-10 hidden lg:block">
+          <p className="mb-3 px-3 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+            Workspace
+          </p>
+          <a href="#portfolio-overview" className="flex items-center gap-3 rounded-xl px-3 py-3 text-sm font-medium text-white hover:bg-white/10 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            <Icon name="grid" size={17} />
+            Portfolio overview
+          </a>
+          <a href="#property-directory" className="mt-1 flex items-center gap-3 rounded-xl px-3 py-3 text-sm text-white/80 hover:bg-white/10 hover:text-white focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-white">
+            <Icon name="building" size={17} />
+            Property directory
+          </a>
+        </div>
+
+        <div className="mt-6 border-t border-white/10 pt-5 lg:mt-auto lg:border-0 lg:pt-0">
+          <p className="mb-3 px-1 text-[10px] font-semibold uppercase tracking-[0.16em] text-white/40">
+            Data workspace
+          </p>
+          <div className="flex items-center gap-3 rounded-xl border border-white/10 bg-white/[0.06] p-3">
+            <span className="grid size-9 shrink-0 place-items-center rounded-xl bg-[#dce9dd] text-xs font-semibold text-[#325d4d]">
+              {firm.initials}
+            </span>
+            <div className="min-w-0 flex-1">
+              <p className="truncate text-xs font-medium">{firm.name}</p>
+              <p className="mt-1 text-[11px] text-white/50">Portfolio data</p>
+            </div>
+            <Icon name="dots" size={16} className="text-white/50" />
+          </div>
+          <p className="mt-4 hidden px-1 text-[11px] leading-5 text-white/40 lg:block">
+            Assignment changes save automatically.
+          </p>
+        </div>
+      </aside>
+  );
+}
+
+export function WorkspaceHeader({ firms, selectedFirmId, onSelectFirm }) {
+  return (
+        <header className="flex flex-col justify-between gap-6 border-b border-[var(--line)] pb-7 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-[10px] font-semibold uppercase tracking-[0.19em] text-[var(--sage-dark)]">
+              Portfolio management
+            </p>
+            <h1 className="mt-2 text-[30px] font-semibold tracking-[-0.05em] text-[var(--ink)] sm:text-[34px]">
+              Portfolio overview
+            </h1>
+            <p className="mt-2 max-w-xl text-sm leading-6 text-[var(--ink-soft)]">
+              A clear view of the properties and portfolios your team is shaping.
+            </p>
+          </div>
+
+          <label className="block min-w-64">
+            <span className="mb-2 block text-[10px] font-semibold uppercase tracking-[0.13em] text-[var(--ink-soft)]">
+              Select a firm
+            </span>
+            <span className="relative block">
+              <select
+                className="h-12 w-full appearance-none rounded-xl border border-[var(--line)] bg-[var(--paper)] pl-4 pr-11 text-sm font-medium outline-none transition focus:border-[var(--sage-dark)] focus:ring-4 focus:ring-[#426c5c]/10"
+                value={selectedFirmId}
+                onChange={(event) => onSelectFirm(event.target.value)}
+              >
+                {firms.map((option) => (
+                  <option key={option.id} value={option.id}>
+                    {option.name}
+                  </option>
+                ))}
+              </select>
+              <Icon
+                name="caret"
+                size={17}
+                className="pointer-events-none absolute right-4 top-1/2 -translate-y-1/2 text-[var(--ink-soft)]"
+              />
+            </span>
+          </label>
+        </header>
+  );
+}
+
+export function FirmMetrics({ metrics }) {
+  return (
+        <section className="mt-7 grid gap-4 sm:grid-cols-2 xl:grid-cols-4" aria-label="Firm summary">
+          <MetricCard
+            label="Properties"
+            value={metrics.propertyCount}
+            detail={`${metrics.totalUnits.toLocaleString()} residential & commercial units`}
+            icon="building"
+            tone="bg-[#e7efe8] text-[#426c5c]"
+          />
+          <MetricCard
+            label="Portfolios"
+            value={metrics.portfolioCount}
+            detail="Curated investment groups"
+            icon="layers"
+            tone="bg-[#f5e9df] text-[#b36e4d]"
+          />
+          <MetricCard
+            label="Assigned"
+            value={`${metrics.assignedCount} / ${metrics.propertyCount}`}
+            detail="Properties in at least one portfolio"
+            icon="check"
+            tone="bg-[#ece9f4] text-[#75668f]"
+          />
+          <MetricCard
+            label="Portfolio value"
+            value={money.format(metrics.totalValue)}
+            detail={`${metrics.averageOccupancy}% average occupancy`}
+            icon="spark"
+            tone="bg-[#f7efe0] text-[#a47d38]"
+          />
+        </section>
+  );
+}
+
+export function FirmPortfolios({ firm, portfolios }) {
+  return (
+        <section className="mt-8 rounded-[22px] border border-[var(--line)] bg-[var(--paper)] p-6 shadow-[0_4px_16px_rgba(32,52,45,0.025)] sm:p-8">
+          <div className="flex flex-wrap items-start justify-between gap-5">
+            <div>
+              <div className="flex items-center gap-2">
+                <span className="size-2 rounded-full bg-[#6e9b7f]" />
+                <p className="text-[10px] font-semibold uppercase tracking-[0.16em] text-[var(--sage-dark)]">
+                  Firm workspace
+                </p>
+              </div>
+              <h2 className="mt-3 text-[23px] font-semibold tracking-[-0.04em]">
+                {firm.name}
+              </h2>
+              <p className="mt-1 text-sm text-[var(--ink-soft)]">{firm.location}</p>
+            </div>
+            <div className="rounded-xl bg-[#f4f4ee] px-4 py-3 text-right">
+              <p className="text-[10px] font-semibold uppercase tracking-[0.12em] text-[var(--ink-soft)]">
+                Current view
+              </p>
+              <p className="mt-1 text-sm font-medium">{portfolios.length} portfolios</p>
+            </div>
+          </div>
+
+          <div className="mt-7 grid gap-3 md:grid-cols-3">
+            {portfolios.map((portfolio, index) => (
+              <article key={portfolio.id} className="rounded-2xl border border-[var(--line)] p-4">
+                <div className="flex items-start justify-between gap-3">
+                  <span className="grid size-9 place-items-center rounded-xl bg-[#f2f4ee] text-[var(--sage-dark)]">
+                    <Icon name="layers" size={17} />
+                  </span>
+                  <span className="rounded-full bg-[#f5f4ef] px-2.5 py-1 text-[10px] font-semibold text-[var(--ink-soft)]">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                </div>
+                <h3 className="mt-4 font-semibold tracking-[-0.02em]">{portfolio.name}</h3>
+                <p className="mt-1 min-h-10 text-xs leading-5 text-[var(--ink-soft)]">
+                  {portfolio.description}
+                </p>
+                <p className="mt-4 border-t border-[var(--line)] pt-3 text-xs font-medium">
+                  {portfolio.propertyIds.length} properties
+                </p>
+              </article>
+            ))}
+          </div>
+        </section>
+  );
+}
+
