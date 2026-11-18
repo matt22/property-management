@@ -116,8 +116,9 @@ export default function PropertyAssignmentMatrix({
         </div>
       </div>
 
+      <div style={{ minHeight: `${4.5 * (properties.length + 1)}rem` }} className="flex flex-col">
       {matchingProperties.length === 0 ? (
-        <div className="grid min-h-48 place-items-center px-6 py-12 text-center">
+        <div className="grid min-h-48 flex-1 place-items-center px-6 py-12 text-center">
           <div>
             <span className="mx-auto grid size-11 place-items-center rounded-2xl bg-[#f2f3ed] text-[var(--sage-dark)]">
               <Icon name="search" size={19} />
@@ -209,6 +210,7 @@ export default function PropertyAssignmentMatrix({
           </table>
         </div>
       )}
+      </div>
 
       <div className="flex flex-wrap items-center justify-between gap-2 border-t border-[var(--line)] bg-[#fafaf6] px-6 py-3.5 text-[11px] text-[var(--ink-soft)]">
         <span>Showing {matchingProperties.length} of {properties.length} properties</span>
