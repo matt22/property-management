@@ -18,7 +18,7 @@ export default function PropertyAssignmentMatrix({
   const [occupancy, setOccupancy] = useState("all");
 
   const matchingProperties = useMemo(
-    () => filterProperties(properties, { query, occupancy, assignment: filter, portfolios }),
+    () => filterProperties(properties, { query, occupancy, assignment: filter === "assigned" ? "unassigned" : filter, portfolios }),
     [filter, occupancy, portfolios, properties, query],
   );
 
