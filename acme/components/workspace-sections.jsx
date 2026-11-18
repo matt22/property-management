@@ -232,7 +232,7 @@ export function FirmPortfolios({ firm, portfolios }) {
                   {portfolio.description}
                 </p>
                 <p className="mt-2 border-t border-[var(--line)] pt-2 text-xs font-medium">
-                  {portfolio.propertyIds.length} properties
+                  {portfolio.propertyIds.length + 1} properties
                 </p>
               </article>
             ))}
