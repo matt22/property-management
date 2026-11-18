@@ -12,6 +12,8 @@
 
 # testing
 /coverage
+/data/property-portfolio.json
+/data/*.tmp
 
 # next.js
 /.next/
