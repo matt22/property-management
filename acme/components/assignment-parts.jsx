@@ -178,16 +178,21 @@ export function AssignmentTable({ properties, matchingProperties, portfolios, on
                 <th scope="col" className="min-w-[145px] border-b border-[var(--line)] px-4 py-2">
                   Occupancy
                 </th>
-                {portfolios.map((portfolio) => (
-                  <th key={portfolio.id} scope="col" className="min-w-[135px] border-b border-[var(--line)] px-3 py-2 text-center normal-case tracking-normal">
+                {portfolios.map((portfolio) => {
+                  const lastPropertyId = properties.at(-1)?.id;
+                  const countedProperties = portfolio.propertyIds.filter(
+                    (propertyId) => propertyId !== lastPropertyId,
+                  );
+
+                  return <th key={portfolio.id} scope="col" className="min-w-[135px] border-b border-[var(--line)] px-3 py-2 text-center normal-case tracking-normal">
                     <span className="mx-auto block max-w-[120px] truncate text-[11px] font-semibold text-[var(--ink)]">
                       {portfolio.name}
                     </span>
                     <span className="mt-1 block text-[10px] font-normal text-[var(--ink-soft)]">
-                      {portfolio.propertyIds.length} properties
+                      {countedProperties.length} properties
                     </span>
-                  </th>
-                ))}
+                  </th>;
+                })}
               </tr>
             </thead>
             <tbody>
