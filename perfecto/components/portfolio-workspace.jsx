@@ -2,7 +2,8 @@
 
 import { useMemo, useState } from "react";
 import Icon from "@/components/icon";
-import { getFirmOverview } from "@/lib/domain";
+import PropertyAssignmentMatrix from "@/components/property-assignment-matrix";
+import { getFirmOverview, setPortfolioAssignment } from "@/lib/domain";
 
 const money = new Intl.NumberFormat("en-US", {
   style: "currency",
@@ -33,15 +34,27 @@ function MetricCard({ label, value, detail, icon, tone }) {
 }
 
 export default function PortfolioWorkspace({ initialData }) {
+  const [data, setData] = useState(initialData);
   const [selectedFirmId, setSelectedFirmId] = useState(initialData.firms[0]?.id ?? "");
   const overview = useMemo(
-    () => getFirmOverview(initialData, selectedFirmId),
-    [initialData, selectedFirmId],
+    () => getFirmOverview(data, selectedFirmId),
+    [data, selectedFirmId],
   );
 
   if (!overview) return null;
 
   const { firm, metrics, portfolios } = overview;
+
+  function handleToggle(portfolioId, propertyId, assigned) {
+    setData((current) =>
+      setPortfolioAssignment(current, {
+        firmId: selectedFirmId,
+        portfolioId,
+        propertyId,
+        assigned,
+      }),
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[var(--canvas)] lg:flex">
@@ -206,6 +219,12 @@ export default function PortfolioWorkspace({ initialData }) {
             ))}
           </div>
         </section>
+
+        <PropertyAssignmentMatrix
+          properties={overview.properties}
+          portfolios={portfolios}
+          onToggle={handleToggle}
+        />
       </main>
     </div>
   );
