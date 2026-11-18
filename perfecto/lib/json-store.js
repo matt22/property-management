@@ -1,11 +1,9 @@
-import "server-only";
-
 import { randomUUID } from "node:crypto";
 import { COPYFILE_EXCL } from "node:fs";
 import { copyFile, mkdir, readFile, rename, rm, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { fileURLToPath } from "node:url";
-import { validateStore } from "@/lib/domain";
+import { validateStore } from "./domain.js";
 
 const DEFAULT_SEED_PATH = fileURLToPath(new URL("../data/seed.json", import.meta.url));
 
